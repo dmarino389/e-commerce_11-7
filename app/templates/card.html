@@ -1,0 +1,9 @@
+<div class="card" style="width: 18rem;">
+  <img src="{{ destination.image_url }}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ destination.title }}</h5>
+    <p class="card-text">{{ destination.description }}</p>
+    <!-- Add more destination details here -->
+    <a href="{{ url_for('main.destination_detail', id=destination.id) }}" class="btn btn-primary">View More</a>
+  </div>
+</div>

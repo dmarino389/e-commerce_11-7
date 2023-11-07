@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    {% for destination in destinations %}
+        {% include 'card.html' %}
+    {% else %}
+        <p>No destinations found.</p>
+    {% endfor %}
+</div>
+{% endblock %}
