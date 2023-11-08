@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Destination{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Edit Destination</h2>
+    <form action="{{ url_for('main.edit_destination', id=destination.id) }}" method="post">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.title.label }}
+            {{ form.title(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.description.label }}
+            {{ form.description(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.image_url.label }}
+            {{ form.image_url(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+</div>
+{% endblock %}

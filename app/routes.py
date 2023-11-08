@@ -4,6 +4,7 @@ from werkzeug.urls import url_parse
 from app import db
 from app.models import User, Destination
 from app.forms import LoginForm, RegistrationForm, DestinationForm
+import requests
 
 bp = Blueprint('main', __name__)
 
@@ -54,10 +55,19 @@ def register():
 @bp.route('/search')
 def search():
     query = request.args.get('query')
-    # Perform the API call to Booking.com with the search query
-    # ...
+    destinations = []
+    if query:
+        response = requests.get('API_ENDPOINT', params={'query': query}, headers={'Authorization': 'Bearer YOUR_API_KEY'})
+        if response.ok:
+            # Assuming the API returns a JSON response with a list of destinations
+            destinations_data = response.json()
+            # You would then process this data and extract the destinations
+            destinations = process_destinations_data(destinations_data)
+        else:
+            flash('There was an error with the API request')
+    else:
+        flash('No query provided for search')
 
-    # Let's assume 'destinations' is the list of destinations from the API response
     return render_template('search_results.html', destinations=destinations)
 
 
@@ -84,7 +94,7 @@ def external_api():
         return jsonify(error=str(e)), response.status_code
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    bp.run(debug=True)
 
 
 

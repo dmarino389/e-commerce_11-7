@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Welcome{% endblock %}</title>
-    <!-- Bootstrap CSS or your stylesheet here -->
+    <title>{% block title %}Travel Destination Finder{% endblock %}</title>
+    <!-- Bootstrap CSS or your preferred CSS framework here -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <nav>
-        <!-- Navigation bar here -->
+        <ul>
+            <li><a href="{{ url_for('main.index') }}">Home</a></li>
+            <li><a href="{{ url_for('main.login') }}">Login</a></li>
+            <li><a href="{{ url_for('main.register') }}">Register</a></li>
+            <li><a href="{{ url_for('main.create_destination') }}">Create Destination</a></li>
+            <!-- Add more navigation links as needed -->
+        </ul>
     </nav>
     {% block content %}
     {% endblock %}
-    <!-- Bootstrap JS or your scripts here -->
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

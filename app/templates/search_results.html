@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
+{% block title %}Search Results{% endblock %}
+
 {% block content %}
 <div class="container">
+    <h2>Search Results</h2>
     {% for destination in destinations %}
         {% include 'card.html' %}
     {% else %}
-        <p>No destinations found.</p>
+        <p>No destinations match your search.</p>
     {% endfor %}
 </div>
 {% endblock %}
