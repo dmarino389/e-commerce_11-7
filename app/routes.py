@@ -49,9 +49,6 @@ def register():
         return redirect(url_for('main.login'))
     return render_template('register.html', title='Register', form=form)
 
-
-
-
 @bp.route('/search')
 def search():
     query = request.args.get('query')
@@ -69,11 +66,6 @@ def search():
         flash('No query provided for search')
 
     return render_template('search_results.html', destinations=destinations)
-
-
-
-
-
 
 @bp.route('/external-api')
 def external_api():
